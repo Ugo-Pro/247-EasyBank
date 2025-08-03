@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+    <style>
+
+section {
+  margin-top: 5rem;
+}
+
+.counter {
+  font-size: 48px;
+  color: teal;
+  text-align: center;
+}
+
+.counter-description {
+  font-size: 18px;
+  color: salmon;
+  text-align: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;background-color: hsla(135, 25%, 3%, 0.804);
+    color: white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+
+<body>
+    
+    <section>
+        <div class="container">
+          <div class="row">
+            <div class=" card col-md-3 ">
+              <div class="counter">2514</div>
+              <div class="counter-description">Partners</div>
+            </div>
+            <div class="card col-md-3">
+               <p><i class="fa fa-check"></i></p>
+              <div class="counter">2315</div>
+              <div class="counter-description">Projects</div>
+            </div>
+            <div class="card col-md-3">
+              <div class="counter">602</div>
+              <div class="counter-description">Happy Clients</div>
+            </div>
+            <div class="card col-md-3">
+              <div class="counter">360</div>
+              <div class="counter-description">Meetings</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+
+const counters = document.querySelectorAll('.counter');
+const speed = 100;
+counters.forEach(counter => {
+    const max = +counter.innerText;
+    counter.setAttribute("data-target", max);
+    counter.innerText = 0;
+});
+counters.forEach(counter => {
+    const updateCount = () => {
+    const target = +counter.getAttribute("data-target");
+    const count = +counter.innerText;
+    const inc = Math.round(target / speed);
+          if( count < target ) {
+            counter.innerText = count + inc;
+            setTimeout(updateCount,1);
+           } else {
+            counter.innerText = target;
+           }
+    }
+    updateCount();
+});
+
+      </script>
+
+      <script src="bootstrap.js"></script>
+</body>
+</html>
